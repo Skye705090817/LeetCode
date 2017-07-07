@@ -1,3 +1,6 @@
+
+//第一次在LeetCode上刷题，完全不知道该怎么写，找了一个最简单的汉明距离还弄了好久，不过最终通过了，开心。
+
 class Solution {
 public:
     int hammingDistance(int x, int y) {
