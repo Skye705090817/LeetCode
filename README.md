@@ -1,0 +1,2 @@
+# LeetCode
+personal solution
