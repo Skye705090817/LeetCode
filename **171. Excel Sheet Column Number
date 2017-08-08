@@ -11,3 +11,20 @@ For example:
     AB -> 28 
     
 //////////////////////////////看不懂题
+class Solution {
+public:
+    int titleToNumber(string s) {
+        int sum = 0, len;
+        len = s.size() - 1;
+        for(int i = 0; i <= len; ++i) {
+            sum += ( s[i] - 'A' + 1) * pow(26, len - i);
+        }
+        return sum;
+    }
+};
+
+//注：s[i]是从字符串前面开始的  s=asdfg  s[0] = a
+
+//一行代码的
+//string a=s.substr(0,5);       //获得字符串s中 从第0位开始的长度为5的字符串//默认时的长度为从开始位置到尾
+return s != "" ? 26 * titleToNumber(s.substr(0, s.size() - 1)) + s[s.size() - 1] - 'A' + 1 : 0;
