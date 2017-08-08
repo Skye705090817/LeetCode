@@ -1,0 +1,49 @@
+Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+
+You may assume that the array is non-empty and the majority element always exist in the array.
+
+
+
+personal solution:
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        
+        int total = 0, max = 0, flag = 0, k = nums[0];
+        vector<int>::iterator i;
+        sort(nums.begin(), nums.end());
+        for (i = nums.begin(); i != nums.end(); ++i) {
+            if(k == *i) {
+                total++;
+            }
+            else {
+                if(total > max) {
+                    max = total;
+                    total = 1;
+                    flag = k;
+                }
+                k = *i;
+            }
+        }
+        if(total > max)
+            flag = *(i - 1);
+     return flag;
+    }
+};
+
+
+思路解析：
+
+1. 初始化majorityIndex，并且维护其对应count；
+
+2. 遍历数组，如果下一个元素和当前候选元素相同，count加1，否则count减1；
+
+3. 如果count为0时，则更改候选元素，并且重置count为1；
+
+4. 返回A[majorityIndex] 
+
+原理：如果majority元素存在（majority元素个数大于n/2,个数超过数组长度一半），那么无论它的各个元素位置是如何分布的，
+其count经过抵消和增加后，最后一定是大于等于1的。 如果不能保证majority存在，需要检验。 复杂度：O(N)
+
+
+
